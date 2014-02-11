@@ -1,6 +1,6 @@
 package com.allanshoulders.vsoutjection.sample.enums;
 
-public enum Database {
+public enum UsersColumns {
 
 	ID,
 	FIRST_NAME,
