@@ -13,7 +13,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 @Namespace("/basic")
 @SuppressWarnings("serial")
-public class SampleVSOutjectionAction extends ActionSupport {
+public class ModelDrivenStyleVSOutjectionAction extends ActionSupport {
 	
 	@Autowired
 	private ContactsDao contactsDao;

@@ -29,11 +29,11 @@
 		<td><s:property value="firstName"/></td>
 		<td><s:property value="middleName"/></td>
 		<td><s:property value="lastName"/></td>
-		<td><s:property value="twitterName"/></td>
+		<td><s:a action="getsetcontacts"><s:property value="twitterName"/></s:a></td>
 		<td><s:property value="city"/></td>
 		<td><s:property value="state"/></td>
 		<td><s:property value="country"/></td>
-		<td><s:property value="email"/></td>
+		<td><s:a action="fieldlevelcontacts"><s:property value="email"/></s:a></td>
 	</tr>
 </s:iterator>
 

@@ -26,11 +26,23 @@ public class DaoTest {
 	
 	@Test
 	public void getAllUsersTest() {
-		List<User> users = ((ContactsDao)ctx.getBean("contactsDao"))
-				.getAllUsers();
-		
+		printUsers(((ContactsDao)ctx.getBean("contactsDao"))
+				.getAllUsers());
+	}
+	
+	
+	@Test
+	public void getAllContactsByUserIdTest() {
+		printUsers(((ContactsDao)ctx.getBean("contactsDao"))
+				.getUsersContactsById(9L));
+	}
+	
+	
+	private void printUsers(List<User> users) {
 		for (User user : users) {
 			System.out.println(user);
 		}
+		
+		System.out.println();
 	}
 }
