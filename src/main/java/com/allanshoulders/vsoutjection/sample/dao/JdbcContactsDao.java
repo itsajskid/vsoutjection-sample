@@ -8,9 +8,9 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.simple.SimpleJdbcDaoSupport;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcDaoSupport;
 
-public class JdbcContactsDao extends SimpleJdbcDaoSupport implements ContactsDao {
+public class JdbcContactsDao extends NamedParameterJdbcDaoSupport implements ContactsDao {
 	
 	@Autowired
 	private UserRowMapper userRowMapper;
