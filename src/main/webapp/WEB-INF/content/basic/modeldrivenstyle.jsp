@@ -5,49 +5,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Sample Action</title>
+<title><s:text name="vsoutjection.title"/>Contacts (ModelDriven Style)</title>
 </head>
 <body>
 <h1>All Users in the System</h1>
 
-
-<table border="0" cellpadding="5" cellspacing="0">
-	<thead>
-		<tr>
-			<th>First Name</th>
-			<th>Middle Name</th>
-			<th>Last Name</th>
-			<th>Twitter</th>
-			<th>City</th>
-			<th>State</th>
-			<th>Country</th>
-			<th>Email</th>
-		</tr>
-	</thead>
-	
-<s:iterator status="iterStatus">
-	<tr>
-		<td><s:property value="firstName"/></td>
-		<td><s:property value="middleName"/></td>
-		<td><s:property value="lastName"/></td>
-		<td>
-			<s:a action="getsetcontacts">
-				<s:param name="twitterName" value="twitterName"/>
-				<s:property value="twitterName"/>
-			</s:a>
-		</td>
-		<td><s:property value="city"/></td>
-		<td><s:property value="state"/></td>
-		<td><s:property value="country"/></td>
-		<td><s:a action="fieldlevelcontacts"><s:property value="email"/></s:a></td>
-	</tr>
-</s:iterator>
-
-<tfoot>
-<tr><td>Number of total contacts: <s:property value="size()"/></td></tr>
-</tfoot>
-
-</table>
+<s:include value="contacts.jsp"/>
 
 </body>
 </html>

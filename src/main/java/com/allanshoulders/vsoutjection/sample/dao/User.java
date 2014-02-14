@@ -2,7 +2,7 @@ package com.allanshoulders.vsoutjection.sample.dao;
 
 public class User {
 
-	private Integer id;
+	private Long id;
 	private String firstName;
 	private String lastName;
 	private String middleName;
@@ -16,11 +16,11 @@ public class User {
 		super();
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

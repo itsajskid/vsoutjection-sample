@@ -19,6 +19,4 @@
     
     <include file="vso-default.xml"/>
     
-    <include file="basic.xml"/>
-    
 </struts>

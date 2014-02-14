@@ -16,7 +16,7 @@ public class UserRowMapper implements ParameterizedRowMapper<User> {
 		user.setFirstName(resultSet.getString(UsersColumns.FIRST_NAME.toString()));
 		user.setLastName(resultSet.getString(UsersColumns.LAST_NAME.toString()));
 		user.setMiddleName(resultSet.getString(UsersColumns.MIDDLE_NAME.toString()));
-		user.setId(resultSet.getInt(UsersColumns.ID.toString()));
+		user.setId(resultSet.getLong(UsersColumns.ID.toString()));
 		user.setCity(resultSet.getString(UsersColumns.CITY.toString()));
 		user.setState(resultSet.getString(UsersColumns.STATE.toString()));
 		user.setTwitterName(resultSet.getString(UsersColumns.TWITTER_NAME.toString()));
