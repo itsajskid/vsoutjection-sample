@@ -1,5 +1,6 @@
 package com.allanshoulders.vsoutjection.sample.test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import junit.framework.TestCase;
@@ -16,6 +17,7 @@ public class DaoTest {
 
 	ApplicationContext ctx =  new ClassPathXmlApplicationContext("spring.xml");
 	
+	
 	@Test
 	public void jdbcContactsDaoTest() {
 		JdbcContactsDao dao = (JdbcContactsDao)ctx.getBean("contactsDao");
@@ -26,19 +28,68 @@ public class DaoTest {
 	
 	@Test
 	public void getAllUsersTest() {
-		printUsers(((ContactsDao)ctx.getBean("contactsDao"))
-				.getAllUsers());
+		printUsers("getAllUsersTest",
+				ctx.getBean(ContactsDao.class)
+					.getAllUsers());
 	}
 	
 	
 	@Test
 	public void getAllContactsByUserIdTest() {
-		printUsers(((ContactsDao)ctx.getBean("contactsDao"))
-				.getUsersContactsById(9L));
+		printUsers("getAllContactsByUserIdTest",
+				ctx.getBean(ContactsDao.class)
+					.getUserContactsById(9L));
 	}
 	
 	
-	private void printUsers(List<User> users) {
+	
+	@Test
+	public void getUserContactsByTwitterNameTest() {
+		printUsers("getUserContactsByTwitterNameTest",
+				ctx.getBean(ContactsDao.class)
+					.getUserContactsByTwitterName("@lexluthor"));
+	}
+	
+	
+	@Test
+	public void getUserContactsByEmailTest() {
+		printUsers("getUserContactsByEmailTest",
+				ctx.getBean(ContactsDao.class)
+					.getUserContactsByEmail("loki@villains.com"));
+	}
+	
+	
+	@Test
+	public void getUserByIdTest() {
+		printUsers("getUserByIdTest", 
+				ctx.getBean(ContactsDao.class)
+					.getUserById(3L));
+	}	
+	
+	@Test
+	public void getUserByTwitterNameTest() {
+		printUsers("getUserByTwitterNameTest", 
+				ctx.getBean(ContactsDao.class)
+					.getUserByTwitterName("@catwoman"));
+	}
+	
+	
+	@Test
+	public void getUserByEmailTest() {
+		printUsers("getUserByEmailTest",
+				ctx.getBean(ContactsDao.class)
+					.getUserByEmail("twoface@villains.com"));
+	}
+	
+	
+	private void printUsers (String testMethodName, User ... users) {
+		printUsers(testMethodName, Arrays.asList(users));
+	}
+	
+	
+	private void printUsers (String testMethodName, List<User> users) {
+		System.out.println(testMethodName);
+		
 		for (User user : users) {
 			System.out.println(user);
 		}

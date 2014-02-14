@@ -5,7 +5,7 @@
 <struts>
     <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
     <constant name="struts.devMode" value="true"/>
-    <constant name="struts.convention.default.parent.package" value="default"/>
+    <constant name="struts.convention.default.parent.package" value="vso-sample-default"/>
     
     <package name="default" namespace="/" extends="struts-default">
 
@@ -16,6 +16,8 @@
         </action>
 
     </package>
+    
+    <include file="vso-default.xml"/>
     
     <include file="basic.xml"/>
     

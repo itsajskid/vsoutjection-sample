@@ -4,7 +4,7 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-    <package name="basic" namespace="/basic" extends="vsoutject-default">
+    <package name="basic" namespace="/basic" extends="vso-sample-default">
     	<default-interceptor-ref name="vsoutjectStack"/>
     </package>
 </struts>

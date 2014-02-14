@@ -10,6 +10,7 @@
 <body>
 <h1>All Users in the System</h1>
 
+
 <table border="0" cellpadding="5" cellspacing="0">
 	<thead>
 		<tr>
@@ -24,12 +25,17 @@
 		</tr>
 	</thead>
 	
-<s:iterator value="model" status="iterStatus">
+<s:iterator status="iterStatus">
 	<tr>
 		<td><s:property value="firstName"/></td>
 		<td><s:property value="middleName"/></td>
 		<td><s:property value="lastName"/></td>
-		<td><s:a action="getsetcontacts"><s:property value="twitterName"/></s:a></td>
+		<td>
+			<s:a action="getsetcontacts">
+				<s:param name="twitterName" value="twitterName"/>
+				<s:property value="twitterName"/>
+			</s:a>
+		</td>
 		<td><s:property value="city"/></td>
 		<td><s:property value="state"/></td>
 		<td><s:property value="country"/></td>
@@ -38,7 +44,7 @@
 </s:iterator>
 
 <tfoot>
-<tr><td>Number of total contacts: <s:property value="model.size()"/></td></tr>
+<tr><td>Number of total contacts: <s:property value="size()"/></td></tr>
 </tfoot>
 
 </table>

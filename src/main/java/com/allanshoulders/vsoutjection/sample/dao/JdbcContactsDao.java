@@ -1,23 +1,18 @@
 package com.allanshoulders.vsoutjection.sample.dao;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcDaoSupport;
+import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
-public class JdbcContactsDao extends NamedParameterJdbcDaoSupport implements ContactsDao {
+import com.allanshoulders.vsoutjection.sample.enums.UsersColumns;
+
+public class JdbcContactsDao extends JdbcDaoSupport implements ContactsDao {
 	
 	@Autowired
 	private UserRowMapper userRowMapper;
-	
-	public JdbcContactsDao(JdbcTemplate jdbcTemplate) {
-		this.setJdbcTemplate(jdbcTemplate);
-	}
 	
 	public JdbcContactsDao(DataSource dataSource) {
 		this.setDataSource(dataSource);
@@ -26,20 +21,60 @@ public class JdbcContactsDao extends NamedParameterJdbcDaoSupport implements Con
 	@Override
 	public List<User> getAllUsers() {
 		return getJdbcTemplate().query("select * from users", userRowMapper);
-	}
+	}	
 	
 	@Override
-	public List<User> getUsersContactsById(Long id) {
-		StringBuilder sb = new StringBuilder("select * from users, ")
-				.append("(select * from contacts where contacts.user_id = :id) a ")
+	public List<User> getUserContactsById(Long id) {
+		StringBuilder sql = new StringBuilder("select * from users, ")
+				.append("(select * from contacts where contacts.user_id = ?) a ")
 				.append("where users.id = a.contact_id");
 		
-		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("id", id);
-		
-		return getJdbcTemplate().query(sb.toString(),
+		return getJdbcTemplate().query(sql.toString(),
 				userRowMapper, 
 				id);
+	}
+
+	@Override
+	public List<User> getUserContactsByTwitterName(String twitterName) {
+		return getUserContactsById(
+				getIdBy(UsersColumns.TWITTER_NAME, twitterName));
+	}
+
+	@Override
+	public List<User> getUserContactsByEmail(String email) {
+		return getUserContactsById(
+				getIdBy(UsersColumns.EMAIL, email));
+	}
+
+	@Override
+	public User getUserById(Long id) {
+		return this.getUserBy(UsersColumns.ID, id);
+	}
+
+	@Override
+	public User getUserByTwitterName(String twitterName) {
+		return this.getUserBy(UsersColumns.TWITTER_NAME, twitterName);
+	}
+
+	@Override
+	public User getUserByEmail(String email) {
+		return this.getUserBy(UsersColumns.EMAIL, email);
+	}
+	
+	private Long getIdBy(UsersColumns column, Object value) {
+		StringBuilder sql = new StringBuilder("select id from users ")
+			.append("where ")
+			.append(column).append(" = ?");
+		
+		return getJdbcTemplate().queryForObject(sql.toString(), Long.class, value);
+	}
+	
+	private User getUserBy(UsersColumns column, Object value) {
+		StringBuilder sql = new StringBuilder("select * from users ")
+			.append("where ")
+			.append(column).append(" = ?");
+		
+		return getJdbcTemplate().queryForObject(sql.toString(), userRowMapper, value);
 	}
 
 }
