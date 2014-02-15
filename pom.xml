@@ -136,6 +136,16 @@
         	<artifactId>commons-beanutils</artifactId>
         	<version>1.9.1</version>
         </dependency>
+        <dependency>
+        	<groupId>com.jgeppert.struts2.jquery</groupId>
+        	<artifactId>struts2-jquery-plugin</artifactId>
+        	<version>3.7.0</version>
+        </dependency>
+        <dependency>
+        	<groupId>com.jgeppert.struts2.jquery</groupId>
+        	<artifactId>struts2-jquery-grid-plugin</artifactId>
+        	<version>3.7.0</version>
+        </dependency>
     </dependencies>
 
     <build>

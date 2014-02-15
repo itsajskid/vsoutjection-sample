@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title><s:text name="vsoutjection.title"/>Contacts (ModelDriven Style)</title>
+<title><s:text name="vsoutjection.title.contacts.modeldriven"/></title>
 </head>
 <body>
-<h1>All Users in the System</h1>
+<h1>All User's of the System</h1>
 
 <s:include value="contacts.jsp"/>
 

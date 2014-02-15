@@ -5,7 +5,7 @@
         
 <struts>
 
-	<package name="vso-sample-default" namespace="/" extends="vsoutject-default">
+	<package name="vso-sample-default" namespace="/" extends="vsoutject-default,json-default">
 		<default-interceptor-ref name="vsoutjectStack"/>
 	</package>
 

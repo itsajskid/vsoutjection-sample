@@ -5,47 +5,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title><s:text name="vsoutjection.title"/>Contacts (Field Level)</title>
+<title><s:text name="vsoutjection.title.contacts.fieldlevel"/></title>
 </head>
 <body>
-<h1><s:property value="twitterName"/>'s contacts</h1>
-
-<table cellspacing="0" cellpadding="5" border="0">
-	<tr>
-		<td>Name:</td>
-		<td>
-			<s:property value="firstName"/>&nbsp;
-			<s:if test="middleName.length > 0">
-				<s:property value="middleName"/>
-			</s:if>
-			<s:property value="lastName"/>
-		</td>
-	</tr>
-	<tr>
-		<td>Twitter:</td>
-		<td><s:property value="twitterName"/></td>
-	</tr>
-	<tr>
-		<td>Email:</td>
-		<td><s:property value="email"/>
-	</tr>
-	<tr>
-		<td>Location:</td>
-		<td>
-			<s:if test="city != 'Unknown'">
-				<s:property value="city"/>,
-			</s:if>
-			<s:if test="state != 'NA'">
-				<s:property value="state"/>
-			</s:if>
-			<s:property value="country"/>
-		</td>
-	</tr>
-</table>
-
+<h1><s:property value="twitterName"/>'s profile</h1>
+<s:include value="user.jsp"/>
 <br/>
 
+<h1><s:property value="twitterName"/>'s contacts</h1>
 <s:include value="contacts.jsp"/>
 
+<br/>
+<s:a action="modeldrivenstyle">See All Users</s:a>
 </body>
 </html>
