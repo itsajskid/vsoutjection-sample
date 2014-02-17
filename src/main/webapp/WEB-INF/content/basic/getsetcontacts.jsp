@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title><s:property value="vsoutjection.title.contacts.getset"/></title>
+<title><s:text name="vsoutjection.title.contacts.getset"/></title>
 </head>
 <body>
 <h1><s:property value="twitterName"/>'s profile</h1>

@@ -17,7 +17,7 @@
 		</tr>
 	</thead>
 	
-<s:iterator>
+<s:iterator value="iterator()">
 	<tr>
 		<td><s:property value="firstName"/></td>
 		<td><s:property value="middleName"/></td>
