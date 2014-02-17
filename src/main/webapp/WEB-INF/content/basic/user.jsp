@@ -7,7 +7,7 @@
 		<td>Name:</td>
 		<td>
 			<s:property value="firstName"/>&nbsp;
-			<s:if test="middleName.length > 0">
+			<s:if test="middleName.length() gt 0">
 				<s:property value="middleName"/>
 			</s:if>
 			<s:property value="lastName"/>
