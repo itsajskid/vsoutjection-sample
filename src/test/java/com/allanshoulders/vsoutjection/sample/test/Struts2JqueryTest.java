@@ -6,7 +6,7 @@ public class Struts2JqueryTest extends StrutsSpringTestCase {
 
 	@Override
 	protected String[] getContextLocations() {
-		return new String[]{"classpath:/WEB-INF/spring.xml"};
+		return new String[]{"classpath*:test-spring.xml"};
 	}
 	
 	public void testJsonTable() throws Exception {

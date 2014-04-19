@@ -6,21 +6,27 @@ import java.util.List;
 import junit.framework.TestCase;
 
 import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.allanshoulders.vsoutjection.sample.dao.ContactsDao;
 import com.allanshoulders.vsoutjection.sample.dao.JdbcContactsDao;
 import com.allanshoulders.vsoutjection.sample.dao.User;
 
+@ContextConfiguration("classpath:test-spring.xml")
+@RunWith(SpringJUnit4ClassRunner.class)
 public class DaoTest {
-
-	ApplicationContext ctx =  new ClassPathXmlApplicationContext("spring.xml");
 	
+	@Autowired
+	private JdbcContactsDao dao;
+	
+	@Autowired
+	private ContactsDao contactsDao;
 	
 	@Test
 	public void jdbcContactsDaoTest() {
-		JdbcContactsDao dao = (JdbcContactsDao)ctx.getBean("contactsDao");
 		TestCase.assertNotNull(dao);
 		TestCase.assertNotNull(dao.getDataSource());
 	}
@@ -28,57 +34,48 @@ public class DaoTest {
 	
 	@Test
 	public void getAllUsersTest() {
-		printUsers("getAllUsersTest",
-				ctx.getBean(ContactsDao.class)
-					.getAllUsers());
+		printUsers("getAllUsersTest", contactsDao.getAllUsers());
 	}
 	
 	
 	@Test
 	public void getAllContactsByUserIdTest() {
 		printUsers("getAllContactsByUserIdTest",
-				ctx.getBean(ContactsDao.class)
-					.getUserContactsById(9L));
+				contactsDao.getUserContactsById(9L));
 	}
-	
-	
+
 	
 	@Test
 	public void getUserContactsByTwitterNameTest() {
 		printUsers("getUserContactsByTwitterNameTest",
-				ctx.getBean(ContactsDao.class)
-					.getUserContactsByTwitterName("@lexluthor"));
+				contactsDao.getUserContactsByTwitterName("@lexluthor"));
 	}
 	
 	
 	@Test
 	public void getUserContactsByEmailTest() {
 		printUsers("getUserContactsByEmailTest",
-				ctx.getBean(ContactsDao.class)
-					.getUserContactsByEmail("loki@villains.com"));
+				contactsDao.getUserContactsByEmail("loki@villains.com"));
 	}
 	
 	
 	@Test
 	public void getUserByIdTest() {
-		printUsers("getUserByIdTest", 
-				ctx.getBean(ContactsDao.class)
-					.getUserById(3L));
+		printUsers("getUserByIdTest", contactsDao.getUserById(3L));
 	}	
+	
 	
 	@Test
 	public void getUserByTwitterNameTest() {
 		printUsers("getUserByTwitterNameTest", 
-				ctx.getBean(ContactsDao.class)
-					.getUserByTwitterName("@catwoman"));
+				contactsDao.getUserByTwitterName("@catwoman"));
 	}
 	
 	
 	@Test
 	public void getUserByEmailTest() {
-		printUsers("getUserByEmailTest",
-				ctx.getBean(ContactsDao.class)
-					.getUserByEmail("twoface@villains.com"));
+		printUsers("getUserByEmailTest", 
+				contactsDao.getUserByEmail("twoface@villains.com"));
 	}
 	
 	
