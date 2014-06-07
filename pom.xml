@@ -12,6 +12,7 @@
     	<spring3.version>3.2.6.RELEASE</spring3.version>
         <struts2.version>2.3.16</struts2.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <dependencies.dir>${basedir}/src/main/resources/dependencies</dependencies.dir>
     </properties>
 
     <dependencies>
@@ -54,8 +55,6 @@
             <scope>test</scope>
         </dependency>
 
-
-
         <dependency>
         	<groupId>com.allanshoulders.struts2</groupId>
         	<artifactId>vsoutjection</artifactId>
@@ -75,11 +74,6 @@
         	<groupId>org.apache.struts</groupId>
         	<artifactId>struts2-convention-plugin</artifactId>
         	<version>${struts2.version}</version>
-        </dependency>
-        <dependency>
-        	<groupId>com.allanshoulders.hypersonic</groupId>
-        	<artifactId>contactsdb</artifactId>
-        	<version>1.0</version>
         </dependency>
         <dependency>
         	<groupId>commons-dbcp</groupId>
@@ -157,6 +151,39 @@
         	<artifactId>jsp-api</artifactId>
         	<version>2.2</version>
         	<scope>provided</scope>
+        </dependency>
+        <dependency>
+        	<groupId>com.allanshoulders.hypersonic</groupId>
+        	<artifactId>contactsdb</artifactId>
+        	<version>1.0</version>
+        	<scope>system</scope>
+        	<systemPath>${dependencies.dir}/contactsdb-1.0.jar</systemPath>
+        </dependency>
+        <dependency>
+        	<groupId>com.jgeppert.struts2.jquery</groupId>
+        	<artifactId>struts2-jquery-plugin</artifactId>
+        	<version>3.7.0</version>
+        	<scope>system</scope>
+        	<systemPath>${dependencies.dir}/struts2-jquery-plugin-3.7.0.jar</systemPath>
+        </dependency>
+        <dependency>
+        	<groupId>com.jgeppert.struts2.jquery</groupId>
+        	<artifactId>struts2-jquery-grid-plugin</artifactId>
+        	<version>3.7.0</version>
+        	<scope>system</scope>
+        	<systemPath>${dependencies.dir}/struts2-jquery-grid-plugin-3.7.0.jar</systemPath>
+        </dependency>  
+        <dependency>
+        	<groupId>com.allanshoulders.struts2</groupId>
+        	<artifactId>vsoutjection</artifactId>
+        	<version>1.2.1-RELEASE</version>
+        	<scope>system</scope>
+        	<systemPath>${dependencies.dir}/vsoutjection-1.2.1-RELEASE.jar</systemPath>
+        </dependency>
+        <dependency>
+        	<groupId>org.apache.struts</groupId>
+        	<artifactId>struts2-json-plugin</artifactId>
+        	<version>${struts2.version}</version>
         </dependency>
     </dependencies>
 
