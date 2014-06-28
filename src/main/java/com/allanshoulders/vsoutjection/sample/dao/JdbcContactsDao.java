@@ -24,10 +24,10 @@ public class JdbcContactsDao extends JdbcDaoSupport implements ContactsDao {
 	}	
 	
 	@Override
-	public List<User> getUserContactsById(Long id) {
-		StringBuilder sql = new StringBuilder("select * from users, ")
-				.append("(select * from contacts where contacts.user_id = ?) a ")
-				.append("where users.id = a.contact_id");
+	public List<User> getUserContactsById(Long id) {		
+		StringBuilder sql = new StringBuilder("select * from users ")
+			.append("left join contacts a on a.user_id = ? ")
+			.append("where users.id = a.contact_id");
 		
 		return getJdbcTemplate().query(sql.toString(),
 				userRowMapper, 

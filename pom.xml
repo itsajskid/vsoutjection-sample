@@ -12,11 +12,10 @@
     	<spring3.version>3.2.6.RELEASE</spring3.version>
         <struts2.version>2.3.16</struts2.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <dependencies.dir>${basedir}/src/main/resources/dependencies</dependencies.dir>
+        <dependencies.dir>${basedir}/src/main/webapp/WEB-INF/lib</dependencies.dir>
     </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-core</artifactId>
@@ -134,11 +133,11 @@
         	<groupId>com.jgeppert.struts2.jquery</groupId>
         	<artifactId>struts2-jquery-plugin</artifactId>
         	<version>3.7.0</version>
+        	<systemPath>${dependencies.dir}/struts2-jquery-plugin-3.7.0.jar</systemPath>
         </dependency>
         <dependency>
         	<groupId>com.jgeppert.struts2.jquery</groupId>
         	<artifactId>struts2-jquery-grid-plugin</artifactId>
-        	<version>3.7.0</version>
         </dependency>
         <dependency>
         	<groupId>javax.servlet</groupId>
@@ -186,7 +185,7 @@
         	<version>${struts2.version}</version>
         </dependency>
     </dependencies>
-
+    	
     <build>
         <plugins>
             <plugin>
