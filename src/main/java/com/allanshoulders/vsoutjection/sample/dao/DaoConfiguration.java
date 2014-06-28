@@ -3,7 +3,6 @@ package com.allanshoulders.vsoutjection.sample.dao;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp.BasicDataSource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
@@ -27,7 +26,6 @@ public class DaoConfiguration {
 		
 	}
 	
-	@Autowired
 	@Bean
 	@Scope("singleton")
 	public ContactsDao contactsDao (DataSource dataSource) {
